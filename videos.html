@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chinese Lucky Numbers Video Library | 269999.com</title>
+<meta name="description" content="Watch the best videos on Chinese lucky and unlucky numbers, number slang like 520 and 1314, and number culture — curated and embedded.">
+<link rel="canonical" href="https://269999.com/videos.html">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website"><meta property="og:site_name" content="269999.com">
+<meta property="og:title" content="Chinese Lucky Numbers Video Library | 269999.com"><meta property="og:description" content="Watch the best videos on Chinese lucky and unlucky numbers, number slang like 520 and 1314, and number culture — curated and embedded.">
+<meta property="og:url" content="https://269999.com/videos.html"><meta property="og:image" content="https://269999.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
+</head>
+<body>
+<main class="wrap">
+<p class="breadcrumb"><a href="index.html">Home</a> › Videos</p>
+<h1>Video Library</h1>
+<p class="lead muted" style="max-width:760px">Hand-picked explainers on Chinese number culture. Videos load only when you click (privacy-enhanced mode).</p>
+<div class="grid g3" data-videos="all" style="margin-top:20px"></div>
+<div class="ad" data-slot="inContent"></div>
+<div class="grid g2" style="margin:20px 0">
+ <div class="card"><h3>🎬 Submit a video</h3><p class="muted">Creators: suggest your video on Chinese numbers, zodiac or feng shui for the library.</p>
+ <form data-form="Video submission"><input class="hp" name="_honey" tabindex="-1" autocomplete="off"><div class="row"><div><label>YouTube URL</label><input type="url" name="video_url" required></div><div><label>Email</label><input type="email" name="email" required></div></div><button class="btn sm" style="margin-top:10px">Suggest video</button></form></div>
+ <div class="card"><h3>📺 More on YouTube</h3><p class="muted">Explore more videos about Chinese lucky numbers.</p><a class="btn sm ghost" id="yt" target="_blank" rel="noopener">Browse on YouTube →</a>
+ <p class="muted" style="font-size:.82rem;margin-top:12px">Videos are embedded under YouTube's Terms of Service and remain the property of their creators. 269999.com is not affiliated with YouTube or the creators unless stated.</p></div>
+</div>
+</main>
+<script src="assets/js/config.js?v=20260930"></script>
+<script src="assets/js/app.js?v=20260930"></script>
+
+<script>document.addEventListener("DOMContentLoaded",()=>{$("#yt").href=SITE.youtubeChannel;const s=document.createElement("script");s.type="application/ld+json";s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","itemListElement":SITE.videos.map((v,i)=>({"@type":"ListItem","position":i+1,"item":{"@type":"VideoObject","name":v.title,"thumbnailUrl":`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`,"embedUrl":`https://www.youtube-nocookie.com/embed/${v.id}`}}))});document.head.appendChild(s);});</script>
+</body>
+</html>
