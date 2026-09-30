@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chinese Zodiac Calculator, Lucky Numbers & Love Compatibility | 269999.com</title>
+<meta name="description" content="Find your Chinese zodiac sign and element from your birth date (lunar-year accurate), your personal lucky numbers, and your zodiac love compatibility score.">
+<link rel="canonical" href="https://269999.com/zodiac.html">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website"><meta property="og:site_name" content="269999.com">
+<meta property="og:title" content="Chinese Zodiac Calculator, Lucky Numbers & Love Compatibility | 269999.com"><meta property="og:description" content="Find your Chinese zodiac sign and element from your birth date (lunar-year accurate), your personal lucky numbers, and your zodiac love compatibility score.">
+<meta property="og:url" content="https://269999.com/zodiac.html"><meta property="og:image" content="https://269999.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
+</head>
+<body>
+<main class="wrap">
+<p class="breadcrumb"><a href="index.html">Home</a> › Zodiac</p>
+<h1>Chinese Zodiac & Your Lucky Numbers</h1>
+<p class="lead muted" style="max-width:760px">Your sign is based on the <b>lunar</b> new year, not January 1 — our calculator handles the cut-off automatically.</p>
+<div class="grid g2" style="align-items:start">
+<div class="card"><h2 style="font-size:1.4rem">🔢 My sign & lucky numbers</h2>
+<form id="zf"><div class="row"><div><label>Birth date</label><input type="date" id="dob" required></div><div><label>First name (optional)</label><input id="nm" placeholder="for name number"></div></div><button class="btn" style="margin-top:14px">Reveal</button></form><div id="zr" class="result"></div></div>
+<div class="card"><h2 style="font-size:1.4rem">💞 Compatibility</h2>
+<form id="cf"><div class="row"><div><label>Sign A</label><select id="a"></select></div><div><label>Sign B</label><select id="b"></select></div></div><button class="btn" style="margin-top:14px">Check match</button></form><div id="cr" class="result"></div></div>
+</div>
+<div class="ad" data-slot="inContent"></div>
+<section style="padding-top:10px"><h2>The 12 signs</h2><div class="grid g4" id="all"></div></section>
+<div class="leadbox" style="margin-bottom:20px"><div class="grid g2" style="align-items:center"><div><h2>Want a full personal chart?</h2><p class="muted">Birth-date based reading with your best numbers, colours, directions and years ahead.</p></div><a class="btn gold" href="consult.html?t=zodiac">Book a personal reading →</a></div></div>
+</main>
+<script src="assets/js/config.js?v=20260930"></script>
+<script src="assets/js/engine.js?v=20260930"></script>
+<script src="assets/js/app.js?v=20260930"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const Z=Lucky.ZODIAC, yr=new Date().getFullYear();
+ const opts=Z.map((z,i)=>`<option value="${i}">${z.em} ${z.en} ${z.ch}</option>`).join(""); $("#a").innerHTML=opts; $("#b").innerHTML=opts; $("#b").value=1;
+ $("#all").innerHTML=Z.map((z,i)=>{const ys=[];for(let y=1936+i+((4-1936%12+12)%12);y<=yr+12;y+=12)ys.push(y);const years=[];for(let y=1900;y<=yr+11;y++){if(((y-4)%12+12)%12===i)years.push(y);}return `<div class="card center"><div style="font-size:2.4rem">${z.em}</div><h3 style="margin:0">${z.en} ${z.ch}</h3><p class="muted" style="font-size:.82rem">${years.slice(-6).join(", ")}</p><div class="pill-row" style="justify-content:center">${z.lucky.map(x=>`<span class="pill">${x}</span>`).join("")}</div></div>`}).join("");
+ $("#zf").onsubmit=e=>{e.preventDefault();const d=new Date($("#dob").value+"T12:00:00");const p=Lucky.personalNumbers(d,$("#nm").value);const z=p.zodiac;
+  $("#zr").innerHTML=`<div class="fade"><div style="font-size:3rem">${z.em}</div><h3>${z.element} ${z.en} ${z.ch} · ${z.ganzhi} year</h3><p class="muted">Lunar year ${z.year}${z.lunar&&z.lunar.month?` · lunar month ${z.lunar.month}, day ${z.lunar.day}`:""}</p><p><b>Your lucky numbers:</b></p><div class="pill-row">${p.lucky.map(x=>`<a class="pill good" href="number.html?n=${x}" style="text-decoration:none">${x}</a>`).join("")}</div><p class="muted" style="margin-top:10px">Life-path number ${p.lifePath}${p.nameNumber?` · name number ${p.nameNumber}`:""}. Sign digits: ${z.lucky.join(", ")}.</p><button class="btn sm ghost" onclick="shareIt('I am a ${z.element} ${z.en}! My lucky numbers: ${p.lucky.join(", ")}')">Share</button></div>`;};
+ $("#cf").onsubmit=e=>{e.preventDefault();const a=+$("#a").value,b=+$("#b").value,c=Lucky.compat(a,b);
+  $("#cr").innerHTML=`<div class="fade center"><div style="font-size:2.4rem">${Z[a].em} + ${Z[b].em}</div><div class="gauge" style="--v:${c.score}"><span>${c.score}</span></div><p><b>${c.label}</b></p></div>`;};
+});
+</script>
+</body>
+</html>

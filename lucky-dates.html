@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucky Date Finder — Auspicious Wedding, Moving & Opening Days (Chinese Almanac) | 269999.com</title>
+<meta name="description" content="Find auspicious days for weddings, moving house, grand openings, contracts and travel with our Chinese almanac (黄历) date finder. Filter out days that clash with your zodiac.">
+<link rel="canonical" href="https://269999.com/lucky-dates.html">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website"><meta property="og:site_name" content="269999.com">
+<meta property="og:title" content="Lucky Date Finder — Auspicious Wedding, Moving & Opening Days (Chinese Almanac) | 269999.com"><meta property="og:description" content="Find auspicious days for weddings, moving house, grand openings, contracts and travel with our Chinese almanac (黄历) date finder. Filter out days that clash with your zodiac.">
+<meta property="og:url" content="https://269999.com/lucky-dates.html"><meta property="og:image" content="https://269999.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
+</head>
+<body>
+<main class="wrap">
+<p class="breadcrumb"><a href="index.html">Home</a> › Lucky Dates</p>
+<h1>Lucky Date Finder <span class="muted" style="font-size:.6em">黄历择日</span></h1>
+<p class="lead muted" style="max-width:780px">Search the next 30–180 days for auspicious dates using the traditional Twelve Day Officers (建除十二神), and remove days that clash with your zodiac sign.</p>
+<div class="grid g2" style="align-items:start">
+<div class="card"><h2 style="font-size:1.4rem">Today's almanac</h2><div id="today"></div></div>
+<div class="card"><h2 style="font-size:1.4rem">Find a lucky day</h2>
+<form id="df"><div class="row"><div><label>Occasion</label><select id="act"><option value="wedding">💍 Wedding / engagement</option><option value="moving">📦 Moving house</option><option value="opening">🎉 Grand opening / launch</option><option value="contract">✍️ Signing a contract</option><option value="travel">✈️ Travel</option><option value="renovation">🔨 Renovation</option><option value="property">🏠 Buying property</option></select></div>
+<div><label>Start date</label><input type="date" id="sd"></div></div>
+<div class="row" style="margin-top:10px"><div><label>Search range</label><select id="rg"><option>30</option><option selected>90</option><option>180</option></select></div>
+<div><label>Your zodiac (avoid clash days)</label><select id="zz"><option value="">— optional —</option></select></div></div>
+<label class="check" style="margin-top:10px"><input type="checkbox" id="we"> Weekends only</label>
+<button class="btn" style="margin-top:14px">Search dates</button></form></div>
+</div>
+<div id="dres" class="result"></div>
+<div class="ad" data-slot="inContent"></div>
+<div class="leadbox" style="margin:26px 0"><div class="grid g2" style="align-items:center"><div><h2>💍 Planning a wedding or opening?</h2><p class="muted">Get a personal date selection matched to both partners' birth dates — our most-requested service.</p></div><div><a class="btn gold" href="consult.html?t=date">Request a personal date pick →</a></div></div></div>
+<section class="prose" style="padding-top:0"><h2>The Twelve Day Officers</h2><div class="table-wrap card"><table><thead><tr><th>Officer</th><th>Good for</th><th>Avoid</th></tr></thead><tbody id="ot"></tbody></table></div>
+<p class="muted" style="font-size:.88rem">Method: the day's Earthly Branch is compared with the solar month (approximate solar-term boundaries). Clash = the zodiac six positions away from the day's branch. This is a simplified traditional method for cultural interest — for major life events, consult a qualified practitioner.</p></section>
+</main>
+<script src="assets/js/config.js?v=20260930"></script>
+<script src="assets/js/engine.js?v=20260930"></script>
+<script src="assets/js/app.js?v=20260930"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const fmt=d=>d.toLocaleDateString(undefined,{weekday:"short",year:"numeric",month:"short",day:"numeric"});
+ const t=Lucky.day(new Date());
+ $("#today").innerHTML=`<p style="font-size:1.1rem;margin:0"><b>${fmt(t.date)}</b></p><p class="muted">Lunar: ${t.lunar||"—"} · Day: ${t.ganzhi} (${t.animal.em} ${t.animal.en})</p><p><span class="tag ${[8,10,4,2,1].includes(t.officer)?"good":t.officer===6?"bad":"neutral"}">${t.off[0]}</span></p><p><b>宜 Good for:</b> ${t.off[1]}<br><b>忌 Avoid:</b> ${t.off[2]}</p><p class="muted">Clashes with: ${t.clash.em} ${t.clash.en} (${t.clash.ch})</p>`;
+ $("#zz").innerHTML+=Lucky.ZODIAC.map((z,i)=>`<option value="${i}">${z.em} ${z.en}</option>`).join("");
+ $("#sd").valueAsDate=new Date();
+ $("#ot").innerHTML=Lucky.OFFICERS.map(o=>`<tr><td><b>${o[0]}</b></td><td>${o[1]}</td><td>${o[2]}</td></tr>`).join("");
+ $("#df").onsubmit=e=>{e.preventDefault();
+  const sd=$("#sd").value?new Date($("#sd").value+"T12:00:00"):new Date();
+  let list=Lucky.findDays($("#act").value,sd,+$("#rg").value,$("#zz").value);
+  if($("#we").checked) list=list.filter(x=>[0,6].includes(x.date.getDay()));
+  const lbl=$("#act").selectedOptions[0].text;
+  $("#dres").innerHTML=list.length?`<h2>${list.length} auspicious dates for ${lbl}</h2><div class="cal">${list.map(x=>`<div class="card fade"><b>${fmt(x.date)}</b><div class="muted" style="font-size:.85rem">${x.lunar} · ${x.ganzhi}</div><div style="margin-top:6px"><span class="tag ${x.rank===0?"good":"neutral"}">${x.rank===0?"★ Best":"Good"} · ${x.off[0]}</span></div><div class="muted" style="font-size:.8rem;margin-top:6px">Clash: ${x.clash.em} ${x.clash.en}</div></div>`).join("")}</div>`:`<div class="card">No matching days in this range — try a longer range or remove filters.</div>`;
+  $("#dres").scrollIntoView({behavior:"smooth"});
+ };
+});
+</script>
+</body>
+</html>

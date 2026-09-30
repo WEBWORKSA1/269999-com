@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chinese Number Meanings 0–9 & Famous Combinations (168, 520, 1314, 8888) | 269999.com</title>
+<meta name="description" content="The complete guide to Chinese number meanings: lucky and unlucky digits 0–9, famous combinations like 168, 518, 520, 1314 and 9999, zodiac lucky numbers and an A–Z number index.">
+<link rel="canonical" href="https://269999.com/meanings.html">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website"><meta property="og:site_name" content="269999.com">
+<meta property="og:title" content="Chinese Number Meanings 0–9 & Famous Combinations (168, 520, 1314, 8888) | 269999.com"><meta property="og:description" content="The complete guide to Chinese number meanings: lucky and unlucky digits 0–9, famous combinations like 168, 518, 520, 1314 and 9999, zodiac lucky numbers and an A–Z number index.">
+<meta property="og:url" content="https://269999.com/meanings.html"><meta property="og:image" content="https://269999.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
+</head>
+<body>
+<main class="wrap">
+<p class="breadcrumb"><a href="index.html">Home</a> › Meanings</p>
+<h1>Chinese Number Meanings</h1>
+<p class="lead muted" style="max-width:760px">In Chinese, numbers are chosen for how they <em>sound</em>. A digit that rhymes with "prosper" is lucky; one that rhymes with "death" is avoided. Here's every digit, the most famous combinations and a full index.</p>
+<nav class="chips" style="margin:14px 0"><a class="chip" href="#digits">Digits 0–9</a><a class="chip" href="#combos">Famous combos</a><a class="chip" href="#zodiac">Zodiac lucky numbers</a><a class="chip" href="#index">Number index</a><a class="chip" href="#regional">Mandarin vs Cantonese</a></nav>
+<section id="digits"><h2>Digits 0–9</h2><div class="grid g4" id="dg"></div></section>
+<div class="ad" data-slot="inContent"></div>
+<section id="combos" style="padding-top:0"><h2>Famous combinations</h2><div class="table-wrap card"><table><thead><tr><th>Number</th><th>Meaning</th><th>Verdict</th></tr></thead><tbody id="cb"></tbody></table></div></section>
+<section id="zodiac" style="padding-top:0"><h2>Lucky numbers by zodiac sign</h2><div class="grid g4" id="zl"></div><p class="muted" style="font-size:.85rem">Commonly cited lucky digits per sign (e.g. China Highlights). Find your sign with our <a href="zodiac.html">zodiac calculator</a>.</p></section>
+<section id="regional" style="padding-top:0" class="prose"><h2>Mandarin vs Cantonese: why readings differ</h2>
+<p>Most homophones come from Mandarin, but Cantonese — spoken in Hong Kong, Guangdong and much of the diaspora — creates its own. <b>2</b> sounds like 易 (easy), so <b>28</b> is "easy prosperity" and <b>26</b> is "easy fortune" (易祿). In Mandarin, <b>26</b> can instead echo 二流 ("second-rate"). <b>9</b> is lucky in both, but also carries a vulgar Cantonese slang meaning in some contexts. Good analysis always considers the audience.</p>
+<h2>Cultural etiquette</h2><ul><li>Give red envelopes in even amounts with 8 or 6 (¥88, ¥168, ¥888). Avoid amounts with 4.</li><li>Wedding gifts often use 9 or 520/1314 for lasting love.</li><li>Don't give clocks (送钟 sounds like attending a funeral) — a number-adjacent faux pas!</li><li>Number 7: the 7th lunar month is the Ghost Month; many avoid weddings then.</li></ul></section>
+<section id="index" style="padding-top:0"><h2>Number index</h2><p class="muted">Every number from 0 to 999 has its own meaning page. Or type any number up to 20 digits on the <a href="number.html">meaning page</a>.</p>
+<div class="tabs" id="rng"></div><div class="numgrid" id="ng"></div></section>
+</main>
+<script src="assets/js/config.js?v=20260930"></script>
+<script src="assets/js/engine.js?v=20260930"></script>
+<script src="assets/js/app.js?v=20260930"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const D=Lucky.DIGITS;
+ $("#dg").innerHTML=Object.keys(D).map(k=>`<a class="card digit" href="number.html?n=${k}"><div class="n">${k}</div><div class="c">${D[k].ch} <span class="muted" style="font-size:.9rem">${D[k].py}</span></div><span class="tag ${D[k].tone}">${D[k].tone==="good"?"Lucky":D[k].tone==="bad"?"Unlucky":"Neutral"}</span><p class="muted" style="font-size:.88rem">${D[k].sound}</p></a>`).join("");
+ $("#cb").innerHTML=Lucky.COMBOS.map(([p,v,m])=>`<tr><td><a href="number.html?n=${p}"><b style="font-size:1.15rem">${p}</b></a></td><td>${m}</td><td><span class="tag ${v>0?"good":"bad"}">${v>0?"Lucky":"Avoid"}</span></td></tr>`).join("");
+ $("#zl").innerHTML=Lucky.ZODIAC.map(z=>`<div class="card center"><div style="font-size:2rem">${z.em}</div><b>${z.en} ${z.ch}</b><div class="pill-row" style="justify-content:center;margin-top:6px">${z.lucky.map(x=>`<span class="pill">${x}</span>`).join("")}</div></div>`).join("");
+ const ranges=[[0,99],[100,199],[200,299],[300,399],[400,499],[500,599],[600,699],[700,799],[800,899],[900,999]];
+ const draw=i=>{const [a,b]=ranges[i];$$("#rng button").forEach((x,j)=>x.classList.toggle("on",i===j));let h="";for(let n=a;n<=b;n++)h+=`<a href="number.html?n=${n}">${n}</a>`;$("#ng").innerHTML=h;};
+ $("#rng").innerHTML=ranges.map(r=>`<button>${r[0]}–${r[1]}</button>`).join("");$$("#rng button").forEach((b,i)=>b.onclick=()=>draw(i));draw(0);
+});
+</script>
+</body>
+</html>
