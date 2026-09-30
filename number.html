@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Number Meaning in Chinese Culture | 269999.com</title>
+<meta name="description" content="What does this number mean in Chinese culture? Homophones, lucky score, love, business and phone-number meaning, plus famous combinations.">
+<link rel="canonical" href="https://269999.com/number.html">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website"><meta property="og:site_name" content="269999.com">
+<meta property="og:title" content="Number Meaning in Chinese Culture | 269999.com"><meta property="og:description" content="What does this number mean in Chinese culture? Homophones, lucky score, love, business and phone-number meaning, plus famous combinations.">
+<meta property="og:url" content="https://269999.com/number.html"><meta property="og:image" content="https://269999.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
+</head>
+<body>
+<main class="wrap">
+<p class="breadcrumb"><a href="index.html">Home</a> › <a href="meanings.html">Meanings</a> › <span id="bc"></span></p>
+<div class="grid g2" style="align-items:end;margin-top:10px">
+  <div><div class="kicker">Chinese number meaning</div><h1 id="h1">Number meaning</h1><p id="intro" class="lead muted"></p></div>
+  <form class="search" id="nf" style="margin:0"><input id="ni" inputmode="numeric" placeholder="Look up another number" aria-label="Number"><button class="btn">Go</button></form>
+</div>
+<div id="curated"></div>
+<div id="res" class="result"></div>
+<section class="prose" style="padding-top:28px">
+  <h2 id="ctxh">What it means in everyday life</h2>
+  <div class="grid g2" id="ctx"></div>
+  <h2 style="margin-top:28px">Spiritual message</h2><div class="card" id="msg"></div>
+  <div class="ad" data-slot="inContent"></div>
+  <h2>FAQ</h2><div id="faq"></div>
+  <h2>Explore nearby numbers</h2><div class="chips" id="near"></div>
+</section>
+</main>
+<script src="assets/js/config.js?v=20260930"></script>
+<script src="assets/js/engine.js?v=20260930"></script>
+<script src="assets/js/results.js?v=20260930"></script>
+<script src="assets/js/app.js?v=20260930"></script>
+
+<script>
+const CUR={
+"269999":["The flagship number of this site.","Read in Cantonese, 26 (yi luk) sounds like 易祿 — 'easy fortune' — and 9999 (久久久久) means 'forever and ever'. Put together, 269999 reads as <b>easy fortune that lasts forever</b>. It contains no 4, ends on four 9s (the emperor's number) and is ideal for longevity, love and long-term business themes. Honest caveat: in Mandarin, 二六 èr-liù can echo 二流 ('second-rate'), so context matters."],
+"8888":["The ultimate prosperity number.","发发发发 — prosperity, again and again. Numbers and plates with 8888 regularly sell at auction for large premiums across Hong Kong, Singapore and mainland China."],
+"888":["Triple prosperity.","发发发 — wealth on wealth. A favourite for shop prices, phone endings and gift amounts."],
+"88":["Double happiness in money.","双发 — double prosperity. Also looks like 囍 (double happiness) and is a common wish in online chats (bye-bye / 拜拜)."],
+"8":["The luckiest single digit.","八 (bā) sounds like 发 (fā), to prosper. The Beijing Olympics opened on 08/08/08 at 8:08 pm."],
+"168":["Prosperity all the way.","一路发 (yī lù fā) — a road of fortune. Hugely popular in business names, prices and phone numbers."],
+"518":["I will prosper.","我要发 (wǒ yào fā). Popular with entrepreneurs and for shop openings."],
+"520":["I love you.","我爱你 (wǒ ài nǐ). May 20 (5/20) has become an unofficial Chinese Valentine's Day with record wedding registrations."],
+"1314":["One lifetime.","一生一世 (yì shēng yí shì) — for a whole life. Paired with 520 as 5201314, 'I love you for a lifetime'."],
+"5201314":["I love you for a lifetime.","The most famous romantic number in Chinese — used for red-envelope amounts, dates and wedding hashtags."],
+"9999":["Forever and ever.","久久久久 — 长长久久, lasting love and endless life. 999 roses and ¥9,999 red envelopes are classic wedding gestures."],
+"999":["Eternal.","久久久 — lasting, supreme; associated with the emperor and longevity."],
+"666":["Everything goes smoothly.","六六六 — smooth sailing; online it also means 'awesome!'. In the West 666 has negative religious connotations — consider your audience."],
+"14":["Want to die (avoid).","要死 (yào sǐ) — one of the most avoided pairs. Many buildings skip floor 14 along with 4 and 13."],
+"4":["The death digit.","四 (sì) sounds like 死 (sǐ). Buildings in China, Hong Kong and Singapore often omit 4th floors."],
+"250":["A fool.","二百五 (èr bǎi wǔ) is slang for an idiot — never use it as a price or gift amount."],
+"2699":["A classic launch price.","¥2,699 is a common smartphone launch price in China — a charm price that avoids 4 and ends on 99 (lasting)."]
+};
+document.addEventListener("DOMContentLoaded",()=>{
+ const n=(Lucky.clean(new URLSearchParams(location.search).get("n"))||"269999").slice(0,20);
+ const a=Lucky.analyze(n,"number"), D=Lucky.DIGITS, cur=CUR[n];
+ document.title=`${n} Meaning in Chinese Culture — Lucky or Not? | 269999.com`;
+ const md=document.querySelector('meta[name=description]'); if(md) md.content=`What does ${n} mean in Chinese? Lucky score ${a.score}/100, homophones, love, business and phone meaning of ${n}.`;
+ const can=document.querySelector('link[rel=canonical]'); if(can) can.href=`https://269999.com/number.html?n=${n}`;
+ $("#bc").textContent=n; $("#h1").textContent=`${n} meaning in Chinese culture`;
+ $("#intro").innerHTML=cur?`<b>${cur[0]}</b> Score: ${a.score}/100 — ${a.verdict}.`:`Is ${n} lucky? It scores <b>${a.score}/100</b> — ${a.verdict}.`;
+ $("#curated").innerHTML=cur?`<div class="card fade" style="margin-top:18px;border-left:5px solid var(--gold)"><p style="margin:0;font-size:1.08rem">${cur[1]}</p></div>`:"";
+ renderAnalysis(a,$("#res"));
+ const good=a.score>=70, ok=a.score>=45, has=d=>a.counts[d]>0;
+ const C=[
+  ["💼 Business",good?`Strong for company phone lines, prices and branding. ${has(8)?"The 8s signal wealth to clients.":"Clean digits read as reliable."}`:ok?"Usable for business; pair it with a lucky ending (8, 88, 168) to lift perception.":"Weak for customer-facing use with Chinese audiences — consider an alternative."],
+  ["❤️ Love & weddings",has(9)||n.includes("520")||n.includes("1314")?"Carries lasting-love symbolism (久 / 我爱你 / 一生一世) — great for wedding dates, gift amounts and anniversaries.":has(4)?"Contains 4 — avoid for wedding gifts or red envelopes.":"Neutral for romance; add 9s or 520 for a love theme."],
+  ["📱 Phone number",a.n81?`81-number method gives ${a.n81.value} (${a.n81.label}). ${D[n.slice(-1)].tone==="good"?"A lucky final digit helps a lot.":"The final digit is not ideal."}`:"Too short for the 81-number method — endings matter most in phone numbers."],
+  ["🏠 Address & property",has(4)?"Buyers from Chinese communities may discount properties with 4 in the address.":"No 4 present — generally well received by Chinese buyers and tenants."]
+ ];
+ $("#ctx").innerHTML=C.map(c=>`<div class="card"><h3>${c[0]}</h3><p class="muted" style="margin:0">${c[1]}</p></div>`).join("");
+ const root=a.sum[a.sum.length-1];
+ const MSG={1:"New beginnings are opening. Take the first step.",2:"Partnership and balance — good things come in pairs.",3:"Growth and creativity; share your ideas.",4:"Build solid foundations; patience turns caution into strength.",5:"Change is coming — stay flexible and centred.",6:"Smooth flow: harmony at home and in business.",7:"Reflect, learn and trust your intuition.",8:"Abundance is near; act with confidence and generosity.",9:"Completion and longevity — what you build now will last."};
+ $("#msg").innerHTML=`<p style="margin:0"><b>Root number ${root}.</b> ${MSG[root]||MSG[9]} <span class="muted">(Angel-number style reading of the digit sum ${a.sum.join(" → ")}. For reflection, not prediction.)</span></p>`;
+ const F=[[`Is ${n} a lucky number in Chinese?`,`${n} scores ${a.score}/100 (${a.verdict}). ${a.found.length?"Key pattern: "+a.found[0].p+" — "+a.found[0].m+".":"It has no famous combination, so single digits drive the reading."}`],[`What does ${n} sound like in Chinese?`,a.digits.slice(0,8).map(d=>`${d} = ${D[d].ch} (${D[d].py})`).join(", ")+"."],[`Is ${n} good for a phone number or plate?`,good?"Yes — it is well above average.":ok?"It's acceptable; small tweaks can improve it.":"It's below average; our analyzer can suggest alternatives."]];
+ $("#faq").innerHTML=F.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");
+ const s=document.createElement("script");s.type="application/ld+json";s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":F.map(f=>({"@type":"Question","name":f[0],"acceptedAnswer":{"@type":"Answer","text":f[1]}}))});document.head.appendChild(s);
+ const N=BigInt(n);const near=[N-2n,N-1n,N+1n,N+2n].filter(x=>x>=0n).map(String).concat(["8","88","168","520","1314","9999","269999"].filter(x=>x!==n));
+ $("#near").innerHTML=near.map(x=>`<a class="chip" href="number.html?n=${x}">${x}</a>`).join("");
+ $("#nf").onsubmit=e=>{e.preventDefault();const v=Lucky.clean($("#ni").value);if(v)location.href="number.html?n="+v;};
+});
+</script>
+</body>
+</html>

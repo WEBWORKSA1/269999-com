@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucky Number Analyzer — Phone, License Plate, Address & Price | 269999.com</title>
+<meta name="description" content="Free Chinese lucky number analyzer. Score any phone number, license plate, house number or price 0–100 with digit meanings, famous combos, the 81-number method and Five Elements.">
+<link rel="canonical" href="https://269999.com/analyzer.html">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website"><meta property="og:site_name" content="269999.com">
+<meta property="og:title" content="Lucky Number Analyzer — Phone, License Plate, Address & Price | 269999.com"><meta property="og:description" content="Free Chinese lucky number analyzer. Score any phone number, license plate, house number or price 0–100 with digit meanings, famous combos, the 81-number method and Five Elements.">
+<meta property="og:url" content="https://269999.com/analyzer.html"><meta property="og:image" content="https://269999.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
+</head>
+<body>
+<main class="wrap">
+<p class="breadcrumb"><a href="index.html">Home</a> › Analyzer</p>
+<h1>Lucky Number Analyzer</h1>
+<p class="lead muted" style="max-width:760px">Pick what you're checking. We read every digit in Mandarin & Cantonese, spot lucky and unlucky combinations, and apply the traditional 81-number method.</p>
+<div class="tabs" role="tablist" id="tabs">
+  <button data-t="phone">📱 Phone</button><button data-t="plate">🚗 Plate</button><button data-t="address">🏠 Address</button><button data-t="price">🏷️ Price</button><button data-t="compare">⚖️ Compare</button>
+</div>
+<div class="card" id="panel"></div>
+<div id="out" class="result"></div>
+<div class="ad" data-slot="inContent"></div>
+<section class="prose" style="padding-top:20px">
+  <h2 id="how">How the analyzer works</h2>
+  <ol><li><b>Digit meanings.</b> Each digit carries a sound-alike meaning: 8 ≈ 发 (prosper), 6 ≈ 顺/禄 (smooth/fortune), 9 ≈ 久 (lasting), 4 ≈ 死 (death).</li>
+  <li><b>Famous combinations.</b> Patterns like 168 (一路发), 518 (我要发), 520 (我爱你), 1314 (一生一世) and warnings like 14 (要死) and 748 (去死吧).</li>
+  <li><b>81-number method (八十一数理).</b> Divide the last four digits by 80, keep the decimal, multiply by 80 — a popular traditional check for phone numbers.</li>
+  <li><b>Five Elements.</b> He Tu mapping reveals which element dominates your number.</li></ol>
+  <h2>Tips by use-case</h2>
+  <div class="grid g2"><div class="card"><h3>Phone numbers</h3><p class="muted">Endings matter most. A number ending in 8, 88, 168 or 9999 is easy to remember and signals success to clients.</p></div>
+  <div class="card"><h3>License plates</h3><p class="muted">Short plates with repeated 8s or 9s command auction premiums in Hong Kong, Singapore and mainland China.</p></div>
+  <div class="card"><h3>Addresses</h3><p class="muted">Avoid 4, 14, 24 where Chinese buyers are a big share of the market — it can affect resale.</p></div>
+  <div class="card"><h3>Prices</h3><p class="muted">Charm prices ending in 8 or 88 perform well with Chinese shoppers; avoid prices with 4.</p></div></div>
+</section>
+</main>
+<script src="assets/js/config.js?v=20260930"></script>
+<script src="assets/js/engine.js?v=20260930"></script>
+<script src="assets/js/results.js?v=20260930"></script>
+<script src="assets/js/app.js?v=20260930"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const P={
+ phone:`<form id="f"><div class="row"><div><label>Phone number</label><input id="v" inputmode="tel" placeholder="+1 416 888 2699" required></div><div><label>Your zodiac (optional)</label><select id="z"><option value="">—</option>${Lucky.ZODIAC.map((z,i)=>`<option value="${i}">${z.em} ${z.en} ${z.ch}</option>`).join("")}</select></div></div><button class="btn" style="margin-top:14px">Analyze phone number</button></form>`,
+ plate:`<form id="f"><label>License plate</label><input id="v" placeholder="e.g. 8888 or ABC 2699" required><p class="muted" style="font-size:.85rem">Letters are ignored; only digits are scored.</p><button class="btn">Check plate</button></form>`,
+ address:`<form id="f"><div class="row"><div><label>Street / house number</label><input id="v" inputmode="numeric" placeholder="e.g. 168" required></div><div><label>Unit / floor (optional)</label><input id="u" inputmode="numeric" placeholder="e.g. 2906"></div></div><button class="btn" style="margin-top:14px">Check address</button></form>`,
+ price:`<form id="f"><label>Your current or target price</label><input id="v" inputmode="decimal" placeholder="e.g. 1500" required><button class="btn" style="margin-top:14px">Find lucky prices</button></form>`,
+ compare:`<form id="f"><div class="row"><div><label>Option A</label><input id="v" required placeholder="e.g. 6479-2211"></div><div><label>Option B</label><input id="b" required placeholder="e.g. 6888-2699"></div><div><label>Option C (optional)</label><input id="c" placeholder=""></div></div><button class="btn" style="margin-top:14px">Compare</button></form>`
+};
+function show(t){ if(!P[t]) t="phone"; $$("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t)); $("#panel").innerHTML=P[t]; $("#out").innerHTML="";
+ const pre=new URLSearchParams(location.search).get("n"); if(pre) $("#v").value=pre;
+ $("#f").onsubmit=e=>{e.preventDefault(); const v=$("#v").value;
+  if(t==="price"){ const list=Lucky.luckyPrices(v); const a=Lucky.analyze(v,"price");
+    $("#out").innerHTML=`<div class="card fade"><h2>Luckier price points near ${esc(v)}</h2><div class="table-wrap"><table><thead><tr><th>Price</th><th>Score</th><th>Why</th></tr></thead><tbody>${list.map(x=>`<tr><td><b style="font-size:1.2rem">${x.price.toLocaleString()}</b></td><td><span class="tag ${x.a.score>=70?"good":x.a.score>=45?"neutral":"bad"}">${x.a.score}</span></td><td>${x.a.found.map(f=>f.m).slice(0,2).join("; ")||"Clean digits, no 4"}</td></tr>`).join("")}</tbody></table></div><p class="muted">Your original price scores <b>${a?a.score:"-"}</b>/100.</p></div>`; return; }
+  if(t==="compare"){ const arr=[v,$("#b").value,$("#c").value].filter(x=>Lucky.clean(x)).map(x=>Lucky.analyze(x,"number")).sort((a,b)=>b.score-a.score);
+    $("#out").innerHTML=`<div class="grid g3 fade">${arr.map((a,i)=>`<div class="card center"><div class="kicker">${i===0?"🏆 Winner":"Option"}</div><h3 style="word-break:break-all">${a.input}</h3><div class="gauge" style="--v:${a.score}"><span>${a.score}</span></div><p>${a.verdict}</p><a class="btn sm ghost" href="number.html?n=${a.input}">Details</a></div>`).join("")}</div>`; return; }
+  let val=v; if(t==="address"&&$("#u").value) val=$("#u").value+v;
+  const a=Lucky.analyze(val,t); renderAnalysis(a,$("#out"));
+  if(t==="phone"&&$("#z").value!==""){ const z=Lucky.ZODIAC[+$("#z").value]; const hit=a.digits.filter(d=>z.lucky.includes(d)).length; $("#out").insertAdjacentHTML("afterbegin",`<div class="card fade" style="margin-bottom:14px">${z.em} <b>${z.en} match:</b> your lucky digits are ${z.lucky.join(", ")} — this number contains ${hit} of them.</div>`); }
+  $("#out").scrollIntoView({behavior:"smooth",block:"start"});
+ };
+ history.replaceState(null,"","#"+t);
+}
+$$("#tabs button").forEach(b=>b.onclick=()=>show(b.dataset.t));
+show(location.hash.slice(1)||"phone");
+});
+</script>
+</body>
+</html>
