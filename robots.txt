@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://269999.com/sitemap.xml
