@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monthly Contest — Lucky Number Story of the Month | Win Prizes | 269999.com</title>
+<meta name="description" content="Enter the 269999.com monthly contest: share your lucky number story and win cash prizes and free readings. Free to enter, no purchase necessary. Official rules inside.">
+<link rel="canonical" href="https://269999.com/contests.html">
+<meta name="theme-color" content="#c8102e">
+<meta property="og:type" content="website"><meta property="og:site_name" content="269999.com">
+<meta property="og:title" content="Monthly Contest — Lucky Number Story of the Month | Win Prizes | 269999.com"><meta property="og:description" content="Enter the 269999.com monthly contest: share your lucky number story and win cash prizes and free readings. Free to enter, no purchase necessary. Official rules inside.">
+<meta property="og:url" content="https://269999.com/contests.html"><meta property="og:image" content="https://269999.com/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
+</head>
+<body>
+<main>
+<section class="hero"><div class="wrap">
+<div class="leadbox"><div class="grid g2" style="align-items:center">
+ <div><div class="kicker" style="color:var(--gold2)">Now open · <span id="cm"></span></div><h1 id="ct" style="color:#fff">Lucky Number Story</h1><p class="muted">Tell us about a number that brought you luck — a phone number, a wedding date, a plate, a house. Best stories win.</p><div class="countdown" data-countdown></div></div>
+ <div><h3>Prizes</h3><ul id="pz" style="font-size:1.05rem"></ul><a class="btn gold" href="#enter">Enter free →</a></div>
+</div></div></div></section>
+<section style="padding-top:0"><div class="wrap grid g2" style="align-items:start">
+<div class="card" id="enter"><h2 style="font-size:1.4rem">Submit your entry</h2>
+<form data-form="Contest entry" data-success="You're in! Your entry is being reviewed. Share your referral link below for bonus entries.">
+ <input class="hp" name="_honey" tabindex="-1" autocomplete="off">
+ <div class="row"><div><label>Name</label><input name="name" required></div><div><label>Email</label><input type="email" name="email" required></div></div>
+ <div class="row" style="margin-top:10px"><div><label>Your lucky number</label><input name="lucky_number" required inputmode="numeric"></div><div><label>Country</label><input name="country" required></div></div>
+ <label style="margin-top:10px">Your story (50–500 words)</label><textarea name="story" rows="6" minlength="50" maxlength="3500" required></textarea>
+ <label style="margin-top:10px">Photo or video link (optional)</label><input name="media_url" type="url" placeholder="https://">
+ <label class="check" style="margin-top:10px"><input type="checkbox" name="age_ok" value="yes" required> I am 18+ (or the age of majority where I live) and accept the <a href="#rules">official rules</a>.</label>
+ <label class="check"><input type="checkbox" name="publish_ok" value="yes"> 269999.com may publish my story with my first name.</label>
+ <button class="btn" type="submit" style="margin-top:12px">Submit entry 🏆</button></form></div>
+<div><h2>Earn bonus entries</h2>
+ <div class="card"><p>Share your personal link. You get <b>+3 entries</b> for each friend who submits a valid entry (max 30).</p>
+ <div style="display:flex;gap:8px"><input id="rl" readonly><button class="btn sm" id="cp">Copy</button></div>
+ <p class="muted" style="font-size:.85rem;margin-top:8px">Also +1 entry for joining the newsletter and +1 for visiting our video library. We never require subscribing, liking or commenting on YouTube.</p></div>
+ <h2 style="margin-top:24px">How winners are chosen</h2><div class="grid steps" style="gap:22px"><div class="card">A panel scores originality (40%), cultural insight (30%) and storytelling (30%).</div><div class="card">Bonus entries break ties and enter the runner-up draw.</div><div class="card">Winners are announced here within 14 days of close and contacted by email.</div></div>
+ <div class="card" style="margin-top:20px"><b>🎁 Sponsor next month's prize</b><p class="muted" style="margin:6px 0">Put your brand in front of an engaged, global audience.</p><a class="btn sm gold" href="advertise.html#sponsor">Become a sponsor</a></div></div>
+</div></section>
+<section class="alt" id="rules"><div class="wrap prose"><h2>Official rules (summary)</h2>
+<ol><li><b>No purchase necessary.</b> A purchase or donation does not increase your chances of winning.</li><li><b>Eligibility:</b> open worldwide to individuals 18+ (or age of majority), except where prohibited or restricted by law. Employees of 269999.com and sponsors are not eligible.</li><li><b>Entry period:</b> from the 1st to the last day of the stated month, 23:59 Eastern Time.</li><li><b>Judging:</b> skill-based as described above; judges' decisions are final.</li><li><b>Prizes:</b> as listed, non-transferable; cash prizes paid via PayPal or equivalent. Winners are responsible for any taxes.</li><li><b>Content:</b> entries must be original, lawful and not infringe third-party rights. You grant 269999.com a non-exclusive licence to publish selected entries with credit.</li><li><b>Privacy:</b> data is used only to run the contest — see our <a href="privacy.html">privacy policy</a>.</li><li>This contest is not sponsored, endorsed or administered by YouTube, Google, Meta or any platform.</li></ol></div></section>
+<section><div class="wrap center"><h2>Past winners</h2><p class="muted">Our first contest runs this month — winners will appear here.</p></div></section>
+</main>
+<script src="assets/js/config.js?v=20260930"></script>
+<script src="assets/js/app.js?v=20260930"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const C=SITE.contest; $("#cm").textContent=C.month; $("#ct").textContent=C.title; $("#pz").innerHTML=C.prizes.map(p=>`<li>${p}</li>`).join("");
+ let id; try{id=localStorage.getItem("myref")||Math.random().toString(36).slice(2,8);localStorage.setItem("myref",id);}catch(e){id=Math.random().toString(36).slice(2,8);}
+ $("#rl").value=location.origin+location.pathname+"?ref="+id;
+ $("#cp").onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText($("#rl").value);toast("Referral link copied!");};
+ const f=$('form[data-form="Contest entry"]'); f.dataset.extra=JSON.stringify({my_referral_code:id,contest:C.month});
+});
+</script>
+</body>
+</html>
